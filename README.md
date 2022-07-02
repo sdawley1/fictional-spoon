@@ -7,3 +7,6 @@ Inputs to perform a Scholar's Mate:
 2. Qh5 Nc6
 3. Bc4 Nf6
 4. Qxf7
+
+## Dependencies
+* [python-chess](https://python-chess.readthedocs.io/en/latest/index.html)
