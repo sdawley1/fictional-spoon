@@ -14,6 +14,7 @@ Inputs to perform a Fool's Mate:
 
 ## Dependencies
 * [python-chess](https://python-chess.readthedocs.io/en/latest/index.html)
+* [stockfish](https://github.com/zhelyabuzhsky/stockfish)
 
 ## Installing stockfish
 1. Go here: [stockfish download](https://stockfishchess.org/download/)
