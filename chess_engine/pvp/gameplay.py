@@ -5,13 +5,13 @@ def GameplayLoop(p1, p2, area):
     Gameplay loop
     Params
     ------
-    p1 (players.Player) = White
-    p2 (players.Player) = Black
-    area (chess.Board) = Board to play on. Keeps track of pretty much everything
+    p1 (players.Player) = WHITE
+    p2 (players.Player) = BLACK
+    area (chess.Board) = Board to play on. Keeps track of pretty much everything.
     Returns
     -------
-    outcome.termination () =
-    outcome.winner (bool) = Winner of game (white == True, black == False)
+    outcome.termination () = Reason that the game ended
+    outcome.winner (bool) = Winner of game (WHITE == True, BLACK == False)
     outcome.result() (str) = Any of "1-0", "0-1", or "1/2-1/2" to denote outcome of game
     """
 
