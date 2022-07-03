@@ -55,7 +55,14 @@ def AIGameplay(p1, p2, area):
 
         # Test termination condition
         outcome = area.outcome()
-
+    
+    # Print final board
+    print()
+    print("Game over!")
+    print("---------------")
+    print(area)
+    print("---------------")
+    
     # Return results of the match
     return outcome.termination, outcome.winner, outcome.result()
 
