@@ -21,4 +21,4 @@ def cpu_move(cpu, area):
     print(f"{cpu.color} is thinking...")
     move = cpu.engine.get_best_move() # This returns a string in UCI formatting
     area.push_uci(move)
-    return move # This function is great because it only allows legal moves
+    return move 
