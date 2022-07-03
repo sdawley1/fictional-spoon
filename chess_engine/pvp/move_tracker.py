@@ -7,13 +7,7 @@ def whose_move(p1, area):
         return "BLACK"
 
 def make_move(player, area):
-    """
-    Function to track human moves
-    area (chess.Board()) = Playing board
-    Return
-    ------
-    Move made by player (str)
-    """
+    """ Function which pushes and tracks moves """   
     while True:  # while loop to test for legality of moves
         move = input(f"Input move for {player.color}: ")
         try:
