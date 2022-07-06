@@ -26,3 +26,4 @@ plt.suptitle(method)
 
 #plt.imshow(resized)
 plt.show()
+#TEST
