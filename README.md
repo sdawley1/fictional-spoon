@@ -13,6 +13,7 @@ Inputs to perform a Fool's Mate:
 ## Dependencies
 * [python-chess](https://python-chess.readthedocs.io/en/latest/index.html)
 * [stockfish](https://github.com/zhelyabuzhsky/stockfish)
+* [opencv-python](https://github.com/opencv/opencv-python)
 
 ## Stockfish Engine
 * [Stockfish](https://github.com/official-stockfish/Stockfish)
