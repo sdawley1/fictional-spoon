@@ -3,8 +3,11 @@ import imutils
 import numpy as np
 from matplotlib import pyplot as plt
 img = cv.imread('qrcodes/sampleqr.jpg',0)
-template = cv.imread('qrcodes/1345.jpg',0)
-plt.imshow(template)
+template = cv.imread('qrcodes/12345.jpg',0)
+template1 = cv.imread('qrcodes/practicetemplate.png',0)
+template = imutils.resize(template, width = int(img.shape[1] * 0.04))
+
+
 plt.show()
 w, h = template.shape[::-1]
 # All the 6 methods for comparison in a list
@@ -17,13 +20,11 @@ min_val, max_val, min_loc, max_loc = cv.minMaxLoc(res)
 
 top_left = max_loc
 bottom_right = (top_left[0] + w, top_left[1] + h)
-cv.rectangle(img,top_left, bottom_right, (255, 0, 0), 2)
-plt.subplot(121),plt.imshow(res,cmap = 'gray')
+cv.rectangle(img,top_left, bottom_right, (255, 0, 255), 2)
+plt.subplot(121),plt.imshow(res,cmap = 'viridis')
 plt.title('Matching Result'), plt.xticks([]), plt.yticks([])
-plt.subplot(122),plt.imshow(img,cmap = 'gray')
+plt.subplot(122),plt.imshow(img,cmap = 'viridis')
 plt.title('Detected Point'), plt.xticks([]), plt.yticks([])
 plt.suptitle(method)
 
-#plt.imshow(resized)
 plt.show()
-#TEST
