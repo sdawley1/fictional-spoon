@@ -2,9 +2,10 @@ import cv2 as cv
 import imutils
 import numpy as np
 from matplotlib import pyplot as plt
-img = cv.imread('1345.jpg',0)
-template = cv.imread('sampleqr.jpg',0)
-resized = imutils.resize(template, width = int(img.shape[1] * 0.1))
+img = cv.imread('qrcodes/sampleqr.jpg',0)
+template = cv.imread('qrcodes/1345.jpg',0)
+plt.imshow(template)
+plt.show()
 w, h = template.shape[::-1]
 # All the 6 methods for comparison in a list
 methods = 'cv.TM_CCOEFF'
@@ -23,7 +24,5 @@ plt.subplot(122),plt.imshow(img,cmap = 'gray')
 plt.title('Detected Point'), plt.xticks([]), plt.yticks([])
 plt.suptitle(method)
 
-print()
-
 #plt.imshow(resized)
-#plt.show()
+plt.show()
