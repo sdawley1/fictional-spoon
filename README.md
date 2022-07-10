@@ -14,6 +14,7 @@ Inputs to perform a Fool's Mate:
 * [python-chess](https://python-chess.readthedocs.io/en/latest/index.html)
 * [stockfish](https://github.com/zhelyabuzhsky/stockfish)
 * [opencv-python](https://github.com/opencv/opencv-python)
+* [Arduino client](https://github.com/arduino/arduino-create-agent/releases)
 
 ## Stockfish Engine
 * [Stockfish](https://github.com/official-stockfish/Stockfish)
