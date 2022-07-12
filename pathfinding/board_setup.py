@@ -50,20 +50,12 @@ def board_path(array, uci_move):
 
 if __name__ == "__main__":
     # List of random FEN strings for testing
-    rf = [
-        "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR",
-        "2n1K3/1N3N2/3P3p/2P1P3/1pr5/1pp2p2/4k3/1b1R4",
-        "1K4k1/7r/1p3pBp/BP6/b1p2R2/2q5/2p5/4R1N1",
-        "2n1R1K1/5p1P/pPB5/2p5/p4Pp1/3kB3/3P4/1N6",
-        "7k/1P6/1B3R2/3p4/1b2b3/Q7/p1R1BKpP/1q4n1",
-        "7R/b1r1B3/1p1p4/1p1q4/P1k2p1p/8/P3P3/5Kn1",
-        "5r2/1P3p2/1Kp1r3/1R1P1Np1/8/2p4k/np1P3P/8",
-        "1b4Rr/2pRKP1B/7n/4P2k/P7/Q2P3b/1n6/8",
-        "2k3N1/2n1P2B/P3p3/8/3rp1P1/p5P1/1p2P2R/5K2",
-        "6BK/4b3/P7/2R1P3/2Rp3p/1p2k3/NP4pP/4r"
-    ]
+    # There are currently 323 lines in the text file
+    fens = []
+    with open("test_fens.txt", "r") as f:
+        fens = [line for line in f.readlines()]
     # Setup board
-    area = board_to_array(rf[4])
+    area = board_to_array(fens[265])
     # UCI move
     move1 = "b1g4"
     # Get path from A* algorithm
