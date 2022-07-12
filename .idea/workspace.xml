@@ -2,9 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d4a79de8-3086-4f11-9a53-11e3f640d51d" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/pathfinding/create_random_fen.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pathfinding/test_fens.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pathfinding/a_star.py" beforeDir="false" afterPath="$PROJECT_DIR$/pathfinding/a_star.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pathfinding/board_setup.py" beforeDir="false" afterPath="$PROJECT_DIR$/pathfinding/board_setup.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pathfinding/create_random_fen.py" beforeDir="false" afterPath="$PROJECT_DIR$/pathfinding/create_random_fen.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -13,6 +14,14 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitSEFilterConfiguration">
+    <file-type-list>
+      <filtered-out-file-type name="LOCAL_BRANCH" />
+      <filtered-out-file-type name="REMOTE_BRANCH" />
+      <filtered-out-file-type name="TAG" />
+      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
+    </file-type-list>
   </component>
   <component name="ProjectId" id="2BY0jTVgM4jaUKr7fqmpx6VxfrA" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">

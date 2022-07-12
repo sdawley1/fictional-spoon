@@ -14,14 +14,15 @@ def board_to_array(fen) -> list:
     # First, generate numpy array
     # If piece present in that position, array[row][col] = 1
     # Otherwise, array[row][col] = 0
-    area = np.zeros((8, 8))
+    z = np.zeros((8, 8))
     board = chess.BaseBoard(board_fen=fen).piece_map() # Returns dict of int:chess.Piece()
     # Iterate through all occupied spaces on board
     # If a piece occupies the position on the board, change area[row][col] from 0 to 1
     for square, piece in board.items():
         row, col = divmod(square, 8)
-        area[row][col] = 1
-    return area
+        z[row][col] = 1
+    # Flip board
+    return z
 
 def uci_to_coords(move, move_class=False):
     """
@@ -46,7 +47,7 @@ def board_path(array, uci_move):
     """
     initial, final = uci_to_coords(uci_move)  # returns coords of initial and final points
     start_square, end_square = Node(None, (initial[0], initial[1])), Node(None, (final[0], final[1]))
-    return Astar(array, start_square, end_square)
+    return Astar(array, start_square, end_square) # Should test if A* returns None in future
 
 if __name__ == "__main__":
     # List of random FEN strings for testing
@@ -55,11 +56,15 @@ if __name__ == "__main__":
     with open("test_fens.txt", "r") as f:
         fens = [line for line in f.readlines()]
     # Setup board
-    area = board_to_array(fens[265])
+    area = board_to_array(fens[64])
     # UCI move
-    move1 = "b1g4"
+    move1, move2 = "b1f8", "g1g6"
     # Get path from A* algorithm
-    path = board_path(area, move1)
-    print(area)
-    print(path)
+    path = board_path(area, move2)
+    print(f"Move: {move2}")
+    print(f"Path: {path}")
+    # Print area
+    # Note the the board is flipped about the x-axis
+    for r in area:
+        print(r)
 

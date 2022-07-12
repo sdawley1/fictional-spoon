@@ -74,6 +74,5 @@ def start():
 
 
 if __name__ == "__main__":
-    # Generate 1000 random FEN positions
-    for i in range(2):
-        start()
+    # Generate FEN positions
+    start()
