@@ -1,23 +1,26 @@
-from move_tracker import whose_move, make_move
+import chess_AI
+import move_tracker
 
-def GameplayLoop(p1, p2, area):
+def GameplayLoop(human, cpu, area):
     """
-    Gameplay loop
+    Gameplay loop with AI opponent
     Params
     ------
-    p1 (players.Player) = WHITE
-    p2 (players.Player) = BLACK
-    area (chess.Board) = Board to play on. Keeps track of pretty much everything.
+    human (players.Player)
+    cpu (players.Player)
+    area (chess.Board) = Board to play on. Keeps track of pretty much everything
     Returns
     -------
     outcome.termination () = Reason that the game ended
     outcome.winner (bool) = Winner of game (WHITE == True, BLACK == False)
     outcome.result() (str) = Any of "1-0", "0-1", or "1/2-1/2" to denote outcome of game
     """
+    # Get ELO of Stockfish to display
+    cpu_elo = cpu.engine.get_parameters()["UCI_Elo"]
 
     print()
     print("Let the game begin!")
-    print(f"Player 1 will play {p1.color} and Player 2 will play {p2.color}.")
+    print(f"The Human will play {human.color} and Stockfish (ELO: {cpu_elo}) will play {cpu.color}.")
     print("All desired moves must be written in standard algebraic notation, e.g., 'e4', 'Nc6', or 'Qxf7'.")
 
     # Establish current outcome of game
@@ -40,17 +43,20 @@ def GameplayLoop(p1, p2, area):
         print("---------------")
         print(area)
         print("---------------")
-        # Players making moves
-        if whose_move(p1, area) == p1.color:
-            move = make_move(p1, area)
-            print(f"{p1.color} played {move}")
+        # This is for when the human needs to make a move
+        if move_tracker.whose_move(human, cpu, area) == human.color:
+            move = move_tracker.human_move(human, area)
+        # This is for when the computer needs to make a move
         else:
-            move = make_move(p2, area)
-            print(f"{p2.color} played {move}")
+            chess_AI.InitializeAI(cpu.engine, area) # Extra step to initialize engine to new position
+            move = move_tracker.cpu_move(cpu, area)
+
+        # Get board evaluation
+        adv = move_tracker.get_stockfish_evaluation(cpu.engine)
 
         # Test termination condition
         outcome = area.outcome()
-        
+
     # Print final board
     print()
     print("Game over!")
