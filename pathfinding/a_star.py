@@ -50,7 +50,7 @@ def return_path(current_node) -> list:
     return path[::-1]  # Iterate through list backward to return reversed path
 
 
-def Astar(area, start, end) -> list: # CURRENTLY NEED TO CHANGE END NODE TO BE VIABLE
+def Astar(area, start, end) -> list:
     """
     A* pathfinding algorithm
     :param area:
@@ -59,8 +59,8 @@ def Astar(area, start, end) -> list: # CURRENTLY NEED TO CHANGE END NODE TO BE V
     :return: List of tuples as a path from start node to end node in area
     """
     # Convert start and end nodes to be viable options
-    area[7-start.position[0]][start.position[1]] = 0.
-    area[7-end.position[0]][end.position[1]] = 0.
+    area[start.position[0]][start.position[1]] = 0.
+    area[end.position[0]][end.position[1]] = 0.
     # Initialize available and unavailable list of nodes
     available, unavailable = [], []
     # Heapify the list of available nodes and add the start node

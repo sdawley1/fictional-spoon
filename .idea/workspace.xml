@@ -5,7 +5,6 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pathfinding/a_star.py" beforeDir="false" afterPath="$PROJECT_DIR$/pathfinding/a_star.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pathfinding/board_setup.py" beforeDir="false" afterPath="$PROJECT_DIR$/pathfinding/board_setup.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pathfinding/create_random_fen.py" beforeDir="false" afterPath="$PROJECT_DIR$/pathfinding/create_random_fen.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

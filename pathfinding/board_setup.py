@@ -1,5 +1,9 @@
 """
 A* pathfinding algorithm for moving pieces across board
+
+8/12/2022
+BOARD IS CURRENTLY ROTATED pi/2 RADIANS WITH THIS MODEL
+I THINK THE LEAST CONFUSING METHOD IS TO ACCOUNT FOR THIS ROTATION SOMEWHERE ELSE IN THE PROJECT
 """
 from a_star import Astar, Node
 import chess
@@ -58,7 +62,7 @@ if __name__ == "__main__":
     # Setup board
     area = board_to_array(fens[64])
     # UCI move
-    move1, move2 = "b1f8", "g1g6"
+    move1, move2 = "b1f8", "g2g8"
     # Get path from A* algorithm
     path = board_path(area, move2)
     print(f"Move: {move2}")
