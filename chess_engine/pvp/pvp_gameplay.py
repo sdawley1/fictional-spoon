@@ -1,13 +1,15 @@
-import move_tracker
+from winsound import PlaySound
 import chess_AI
+import move_tracker
+from chess_engine.players import Player
 
-def AIGameplay(human, cpu, area):
+def GameplayLoop(p1: Player, p2: Player, area: chess.Board()) -> tuple:
     """
-    Gameplay loop with AI opponent
+    Gameplay loop
     Params
     ------
-    human (players.Player) = White
-    cpu (players.Player) = Black
+    p1 (players.Player)
+    p2 (players.Player)
     area (chess.Board) = Board to play on. Keeps track of pretty much everything
     Returns
     -------
@@ -15,12 +17,10 @@ def AIGameplay(human, cpu, area):
     outcome.winner (bool) = Winner of game (WHITE == True, BLACK == False)
     outcome.result() (str) = Any of "1-0", "0-1", or "1/2-1/2" to denote outcome of game
     """
-    # Get ELO of Stockfish to display
-    cpu_elo = cpu.engine.get_parameters()["UCI_Elo"]
 
     print()
     print("Let the game begin!")
-    print(f"The Human will play {human.color} and Stockfish (ELO: {cpu_elo}) will play {cpu.color}.")
+    print(f"Player 1 will play {p1.color} and Player 2 will play {p2.color}.")
     print("All desired moves must be written in standard algebraic notation, e.g., 'e4', 'Nc6', or 'Qxf7'.")
 
     # Establish current outcome of game
@@ -28,43 +28,42 @@ def AIGameplay(human, cpu, area):
     # i.e., test for termination before another loop begins in the while loop
     outcome = area.outcome()
 
+    # Confirm game
     print()
     if input("Proceed? (y/n): ") == "y":
+        # Here's a good spot to initialize the Stockfish engine!
+        stockfish = chess_AI.BuildStockfish(depth=15, elo=1200)
         pass
     else:
         print("Another day...")
         return None, None, None
 
     while not outcome:
-        white = human.color if area.turn == human.bool_color else cpu.color
-        # Keeping track of whose turn it is
-        whose_move = area.turn
         # Print playing board
         print()
-        print(f"MOVE {area.fullmove_number} ({'WHITE' if whose_move else 'BLACK'})")
+        print(f"MOVE {area.fullmove_number} ({'WHITE' if area.turn else 'BLACK'})")
         print("---------------")
         print(area)
         print("---------------")
-        # This is for when the human needs to make a move
-        if move_tracker.whose_move(human, cpu, area) == human.color:
-            move = move_tracker.human_move(human, area)
-            print(f"{human.color} played {move}")
-        # This is for when the computer needs to make a move
+        # Players making moves
+        if move_tracker.whose_move(p1, p2, area) == p1.color:
+            move = move_tracker.human_move(p1, area)
         else:
-            chess_AI.InitializeAI(cpu.engine, area) # Extra step to initialize engine to new position
-            move = move_tracker.cpu_move(cpu, area)
-            print(f"{cpu.color} played {move}")
+            move = move_tracker.human_move(p2, area)
+
+        # Get board evaluation
+        adv = move_tracker.get_stockfish_evaluation(stockfish)
 
         # Test termination condition
         outcome = area.outcome()
-       
+
     # Print final board
     print()
     print("Game over!")
     print("---------------")
     print(area)
     print("---------------")
-
+    
     # Return results of the match
     return outcome.termination, outcome.winner, outcome.result()
 
