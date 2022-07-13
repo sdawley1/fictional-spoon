@@ -1,15 +1,15 @@
 import chess
 from stockfish import Stockfish
-from chess_engine.players import Player
+from players import Player
 
-def whose_move(p1: Player, p2: Player, area: Board) -> int:
+def whose_move(p1: Player, p2: Player, area: chess.Board) -> int:
     """ Determine whose turn it is to move in the game """
     if area.turn == p1.bool_color:
         return p1.color
     else:
         return p2.color
 
-def UCI_to_san(area: chess.Board(), move: str) -> chess.Move():
+def UCI_to_san(area: chess.Board(), move: str) -> chess.Move:
     """
     Convert UCI move to standard algebraic notation.
     Assumes move is a string in UCI format.

@@ -3,7 +3,8 @@ Environment vs. Environment chess game
 """
 
 import chess_AI
-from chess_engine.players import Player
+import chess
+from players import Player
 import move_tracker
 
 def GameplayLoop(p1: Player, p2: Player, area: chess.Board()) -> tuple:

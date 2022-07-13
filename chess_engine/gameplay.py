@@ -3,7 +3,7 @@
 
 from tkinter import Place
 from chess import Board
-from chess_engine.players import Player
+from players import Player
 
 
 def GameplayLoop(p1: Player, p2: Player, area: Board) -> tuple:
