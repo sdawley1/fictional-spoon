@@ -5,11 +5,12 @@ A* pathfinding algorithm for moving pieces across board
 BOARD IS CURRENTLY ROTATED pi/2 RADIANS WITH THIS MODEL
 I THINK THE LEAST CONFUSING METHOD IS TO ACCOUNT FOR THIS ROTATION SOMEWHERE ELSE IN THE PROJECT
 """
+from array import array
 from a_star import Astar, Node
 import chess
 import numpy as np
 
-def board_to_array(fen) -> list:
+def board_to_array(fen: str) -> list:
     """
     Generate numpy array to represent chess board from FEN representation
     :param fen: (str) FEN representation of board
@@ -25,10 +26,9 @@ def board_to_array(fen) -> list:
     for square, piece in board.items():
         row, col = divmod(square, 8)
         z[row][col] = 1
-    # Flip board
     return z
 
-def uci_to_coords(move, move_class=False):
+def uci_to_coords(move: str, move_class: bool=False) -> tuple:
     """
     Convert UCI representation of a move to coordinate for an array
     :param move: (str) move being made. MUST BE UCI FORM
@@ -43,7 +43,7 @@ def uci_to_coords(move, move_class=False):
     else: # If we're passing through chess.Move() objects, skip the middle man
         return divmod(move.from_square, 8), divmod(move.to_square, 8)
 
-def board_path(array, uci_move):
+def board_path(array: array, uci_move: str) -> list:
     """
     Get path from start square to end square on chess board using A* pathfinding algorithm
     :param array: (numpy.array()) Array representing positions of pieces on chess board

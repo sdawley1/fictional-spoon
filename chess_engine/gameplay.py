@@ -1,4 +1,8 @@
-def GameplayLoop(p1, p2, area):
+from tkinter import Place
+from chess_engine.players import Player
+
+
+def GameplayLoop(p1: Player, p2: Player, area: chess.Board()) -> tuple:
     """
     Gameplay loop
     Params

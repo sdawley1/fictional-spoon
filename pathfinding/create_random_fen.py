@@ -3,13 +3,17 @@ Creating random FEN positions for testing pathfinding algorithm
 All code taken from online
 https://rosettacode.org/wiki/Generate_random_chess_position
 """
+from array import array
 import random
 
 board = [[" " for x in range(8)] for y in range(8)]
 piece_list = ["R", "N", "B", "Q", "P"]
 
 
-def place_kings(brd):
+def place_kings(brd: array) -> None:
+    """
+    Place kings on chess board
+    """
     while True:
         rank_white, file_white, rank_black, file_black = random.randint(0, 7), random.randint(0, 7), random.randint(0,
                                                                                                                     7), random.randint(
@@ -20,7 +24,10 @@ def place_kings(brd):
             break
 
 
-def populate_board(brd, wp, bp):
+def populate_board(brd: array, wp: int, bp: int) -> None:
+    """
+    Populate board with number of white pieces (wp) and black pieces (bp)
+    """
     for x in range(2):
         if x == 0:
             piece_amount = wp
@@ -36,7 +43,8 @@ def populate_board(brd, wp, bp):
                 piece_amount -= 1
 
 
-def fen_from_board(brd):
+def fen_from_board(brd: array) -> str:
+    """Get FEN representation of from a given array representing a chess board"""
     fen = ""
     for x in brd:
         n = 0
@@ -55,7 +63,8 @@ def fen_from_board(brd):
     return fen
 
 
-def pawn_on_promotion_square(pc, pr):
+def pawn_on_promotion_square(pc: str, pr: str) -> bool:
+    """Test if a pawn is on a promotion square"""
     if pc == "P" and pr == 0:
         return True
     elif pc == "p" and pr == 7:
@@ -63,7 +72,8 @@ def pawn_on_promotion_square(pc, pr):
     return False
 
 
-def start():
+def start() -> None:
+    """Generate random chess board. Upper case are white pieces, lower case are black pieces"""
     piece_amount_white, piece_amount_black = random.randint(0, 15), random.randint(0, 15)
     place_kings(board)
     populate_board(board, piece_amount_white, piece_amount_black)

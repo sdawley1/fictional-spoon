@@ -3,8 +3,10 @@ A* pathfinding algorithm
 Implementation taken from Ryan Collingwood in astar.py
 https://gist.github.com/ryancollingwood/32446307e976a11a1185a5394d6657bc
 """
-##### FIX THIS ####
+
+from array import array
 import heapq
+from xml.dom import NodeFilter
 
 
 class Node:
@@ -12,32 +14,35 @@ class Node:
     Node class for A* pathfinding algorithm
     """
 
-    def __init__(self, parent=None, position=None):
+    def __init__(self, parent: "Node"=None, position: tuple=None) -> None:
         self.parent = parent  # Another Node class
         self.position = position  # This should be a tuple of (x, y)
         ## Effects of the node ##
-        self.f = 0  # Total cost of a node
-        self.g = 0  # Distance between current node and start node
-        self.h = 0  # Heuristic; estimated distance from current node to end node
+        # f = Total cost of a node
+        # g = Distance between current node and start node
+        # h = Heuristic; estimated distance from current node to end node
+        self.f = 0  
+        self.g = 0  
+        self.h = 0  
 
-    # Test if two nodes are the same
-    def __eq__(self, other):
+    def __eq__(self, other: "Node") -> None:
+        """Test if two nodes are the same"""
         return self.position == other.position
 
-    # Get representation of a node
-    def __repr__(self):
+    def __repr__(self) -> None:
+        """Get representation of a node"""
         return f"{self.position} - f: {self.f}, g: {self.g}, h: {self.h}"
 
-    # Redefine less than for purposes of heap queue
-    def __lt__(self, other):
+    def __lt__(self, other: "Node") -> None:
+        """Redefine less than operator for purposes of heap queue"""
         return self.f < other.f
 
-    # Redefine greater than for purposes of heap queue
-    def __gt__(self, other):
+    def __gt__(self, other: "Node") -> None:
+        """Redefine greater than operator for purposes of heap queue"""
         return self.f > other.f
 
 
-def return_path(current_node) -> list:
+def return_path(current_node: Node) -> list:
     """
     Return path of A* algorithm to get from start to end node
     """
@@ -50,7 +55,7 @@ def return_path(current_node) -> list:
     return path[::-1]  # Iterate through list backward to return reversed path
 
 
-def Astar(area, start, end) -> list:
+def Astar(area: array, start: Node, end: Node) -> list:
     """
     A* pathfinding algorithm
     :param area:

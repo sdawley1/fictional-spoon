@@ -1,0 +1,15 @@
+{
+    "workbench.list.mouseWheelScrollSensitivity": 1,
+    "workbench.reduceMotion": "off",
+    "workbench.quickOpen.preserveInput": false,
+    "workbench.colorTheme": "Default Dark+",
+    "workbench.fontAliasing": "default",
+    "workbench.iconTheme": "vs-seti",
+    "workbench.tree.expandMode": "doubleClick",
+    "workbench.editor.highlightModifiedTabs": true,
+    "workbench.editor.labelFormat": "short",
+    "workbench.editor.limit.enabled": true,
+    "zenMode.restore": false,
+    "zenMode.hideLineNumbers": false,
+    "search.smartCase": true
+}
