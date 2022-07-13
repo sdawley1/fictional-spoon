@@ -1,7 +1,8 @@
 import chess_AI
 import move_tracker
+from chess_engine.players import Player
 
-def GameplayLoop(human, cpu, area):
+def GameplayLoop(human: Player, cpu: Player, area: chess.Board()) -> None:
     """
     Gameplay loop with AI opponent
     Params
