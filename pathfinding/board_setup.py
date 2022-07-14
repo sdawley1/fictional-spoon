@@ -6,7 +6,7 @@ BOARD IS CURRENTLY ROTATED pi/2 RADIANS WITH THIS MODEL
 I THINK THE LEAST CONFUSING METHOD IS TO ACCOUNT FOR THIS ROTATION SOMEWHERE ELSE IN THE PROJECT
 """
 from array import array
-from a_star import Astar, Node
+from pathfinding.a_star import Astar, Node
 import chess
 import numpy as np
 

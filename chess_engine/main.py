@@ -1,5 +1,9 @@
 #!/usr/bin/python3
 
+"""
+Script to invoke gameplay
+"""
+import sys
 import chess
 import chess_AI
 import numpy as np
@@ -7,6 +11,9 @@ import players
 from eve import eve_gameplay
 from pve import pve_gameplay
 from pvp import pvp_gameplay
+
+sys.path.append("..")
+from pathfinding.board_setup import board_to_array
 
 def main() -> None:
     """ Main function """
@@ -39,7 +46,7 @@ def main() -> None:
             print("Must answer with any of 'pvp', 'pve', or 'eve'.")
 
     while True:
-        # Establish chess board
+        # Establish chess board and get fen representation
         area = chess.Board()
 
         # Gameplay loop

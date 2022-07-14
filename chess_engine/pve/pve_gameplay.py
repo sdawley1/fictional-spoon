@@ -47,11 +47,11 @@ def GameplayLoop(human: Player, cpu: Player, area: chess.Board) -> tuple:
         print("---------------")
         # This is for when the human needs to make a move
         if move_tracker.whose_move(human, cpu, area) == human.color:
-            move = move_tracker.human_move(human, area)
+            move, a_star_path = move_tracker.human_move(human, area)
         # This is for when the computer needs to make a move
         else:
             chess_AI.InitializeAI(cpu.engine, area) # Extra step to initialize engine to new position
-            move = move_tracker.cpu_move(cpu, area)
+            move, a_star_path = move_tracker.cpu_move(cpu, area)
 
         # Get board evaluation
         adv = move_tracker.get_stockfish_evaluation(cpu.engine)

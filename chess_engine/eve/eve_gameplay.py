@@ -53,10 +53,10 @@ def GameplayLoop(p1: Player, p2: Player, area: chess.Board()) -> tuple:
         # Making moves
         if move_tracker.whose_move(p1, p2, area) == p1.color:
             chess_AI.InitializeAI(p1.engine, area)
-            move = move_tracker.cpu_move(p1, area)
+            move, a_star_path = move_tracker.cpu_move(p1, area)
         else:
             chess_AI.InitializeAI(p2.engine, area)
-            move = move_tracker.cpu_move(p2, area)
+            move, a_star_path = move_tracker.cpu_move(p2, area)
 
         # Get board evaluation
         adv = move_tracker.get_stockfish_evaluation(p1.engine)

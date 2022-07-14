@@ -4,6 +4,7 @@ import chess_AI
 import chess
 import move_tracker
 from players import Player
+import sys
 
 def GameplayLoop(p1: Player, p2: Player, area: chess.Board()) -> tuple:
     """
@@ -49,9 +50,9 @@ def GameplayLoop(p1: Player, p2: Player, area: chess.Board()) -> tuple:
         print("---------------")
         # Players making moves
         if move_tracker.whose_move(p1, p2, area) == p1.color:
-            move = move_tracker.human_move(p1, area)
+            move, a_star_path = move_tracker.human_move(p1, area)
         else:
-            move = move_tracker.human_move(p2, area)
+            move, a_star_path = move_tracker.human_move(p2, area)
 
         # Get board evaluation
         adv = move_tracker.get_stockfish_evaluation(stockfish)

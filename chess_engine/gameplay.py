@@ -1,4 +1,5 @@
 """
+Primary gameplay loop for all forms of play
 """
 
 from tkinter import Place

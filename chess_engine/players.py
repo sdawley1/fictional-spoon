@@ -1,3 +1,7 @@
+"""
+Player class
+"""
+
 from stockfish import Stockfish
 
 # All customizable parameters for Stockfish
@@ -34,6 +38,9 @@ class Player:
         self.engine = engine
         return
 
+    def __str__(self) -> str:
+        return f"{self.color} is {self.wins}-{self.losses}"
+
     def add_win(self) -> None:
         """ Add a win to a player's record"""
         self.wins += 1
@@ -63,4 +70,6 @@ class Player:
         return
 
 
-
+if __name__ == "__main__":
+    p = Player(True, 1, 0)
+    print(p)

@@ -1,6 +1,18 @@
+"""
+Tracking moves made by human and computer
+
+ADD CASE FOR IF PLAYER CASTLES TO PATHFINDING ALGORITHM
+HOPEFULLY IT'S NOT THAT HARD
+"""
+
+from mmap import ACCESS_READ
 import chess
 from stockfish import Stockfish
 from players import Player
+import sys
+
+sys.path.append("../")
+from pathfinding.board_setup import board_path, board_to_array 
 
 def whose_move(p1: Player, p2: Player, area: chess.Board) -> int:
     """ Determine whose turn it is to move in the game """
@@ -43,13 +55,27 @@ def get_stockfish_evaluation(engine: Stockfish) -> str:
 def human_move(human: Player, area: Player) -> str:
     """ Function which pushes and tracks moves made by human """
     while True:  # while loop to test for legality of moves
+        # First get FEN represenation of board before a move is made
+        # Then, allow the player to make a mvove
+        area_array = board_to_array(area.fen().split(" ")[0])
         move = input(f"Input move for {human.color}: ")
         try:
-            area.push_san(move) # This function is great because it only allows legal moves
+            # Now get UCI representation of move made by player
+            # and push the move ONLY IF ITS LEGAL
+            uci_move = area.parse_san(move).uci()
             print(f"{human.color} plays {move}")
+            # Try and find optimal path
+            try:
+                a_star_path = board_path(area_array, uci_move)
+                print(f"Optimal path is {a_star_path}")
+            except IndexError:
+                a_star_path = None
+                print("No optimal path found.")
+            # Push move to playing area
+            area.push_san(move)
             if area.is_check():
                 print(f"The king is in check!")
-            return move
+            return move, a_star_path
         except ValueError:  # Catch if move is illegal
             print("ILLEGAL MOVE")
 
@@ -60,12 +86,22 @@ def cpu_move(cpu: Player, area: chess.Board) -> str:
     """
     # Unlike before, I'm not worried about Stockfish returning an illegal move
     print(f"{cpu.color} is thinking...")
-    move = cpu.engine.get_best_move() # This returns a string in UCI formatting
+    area_array = board_to_array(area.fen().split(" ")[0])
+    # This returns a string in UCI formatting so no need to transform it as above
+    move = cpu.engine.get_best_move() 
     print(f"{cpu.color} plays {UCI_to_san(area, move)}")
+    # Try and find optimal path
+    try:
+        a_star_path = board_path(area_array, move)
+        print(f"Optimal path is {a_star_path}")
+    except IndexError:
+        a_star_path = None
+        print("No optimal path found.")
+    # Push move to playing area
     area.push_uci(move)
     if area.is_check():
         print(f"The king is in check!")
-    return move
+    return move, a_star_path
 
 if __name__ == "__main__":
     ...

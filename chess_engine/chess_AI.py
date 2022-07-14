@@ -1,3 +1,7 @@
+"""
+Create and initialize chess engine to act as environment (cpu)
+"""
+
 from chess import Board
 from stockfish import Stockfish
 
