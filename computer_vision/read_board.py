@@ -5,7 +5,9 @@ import numpy as np
 from matplotlib import pyplot as plt
 from itertools import combinations
 
-
+'''inputs are the picture of the board, dictionary of piece names (upper and lowercase for color)
+and template names. does a for loop, calls another function that outputs the square each piece
+is in. outputs 8x8 numpy array representing the current state.'''
 def read_board(board_pic, template_names):
     os.chdir("./qrcodes")
     ranks = {}
