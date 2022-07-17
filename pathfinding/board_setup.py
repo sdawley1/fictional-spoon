@@ -5,10 +5,13 @@ A* pathfinding algorithm for moving pieces across board
 BOARD IS CURRENTLY ROTATED pi/2 RADIANS WITH THIS MODEL
 I THINK THE LEAST CONFUSING METHOD IS TO ACCOUNT FOR THIS ROTATION SOMEWHERE ELSE IN THE PROJECT
 """
+import sys
 from array import array
-from pathfinding.a_star import Astar, Node
 import chess
 import numpy as np
+
+sys.path.append("..")
+from pathfinding.a_star import Astar, Node
 
 def board_to_array(fen: str) -> list:
     """

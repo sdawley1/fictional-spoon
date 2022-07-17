@@ -2,7 +2,7 @@
     "workbench.list.mouseWheelScrollSensitivity": 1,
     "workbench.reduceMotion": "off",
     "workbench.quickOpen.preserveInput": false,
-    "workbench.colorTheme": "Default Dark+",
+    "workbench.colorTheme": "Palenight Theme",
     "workbench.fontAliasing": "default",
     "workbench.iconTheme": "vs-seti",
     "workbench.tree.expandMode": "doubleClick",
@@ -11,5 +11,15 @@
     "workbench.editor.limit.enabled": true,
     "zenMode.restore": false,
     "zenMode.hideLineNumbers": false,
-    "search.smartCase": true
+    "search.smartCase": true,
+    "python.pythonPath": "/Users/samdawley/.virtualenvs/app-FzQGSFjf/bin/python",
+    "python.testing.unittestArgs": [
+        "-v",
+        "-s",
+        ".",
+        "-p",
+        "*test.py"
+    ],
+    "python.testing.pytestEnabled": false,
+    "python.testing.unittestEnabled": true
 }

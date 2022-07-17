@@ -12,7 +12,7 @@ from players import Player
 import sys
 
 sys.path.append("../")
-from pathfinding.board_setup import board_path, board_to_array 
+from pathfinding.board_setup import board_path, board_to_array
 
 def whose_move(p1: Player, p2: Player, area: chess.Board) -> int:
     """ Determine whose turn it is to move in the game """
@@ -88,7 +88,7 @@ def cpu_move(cpu: Player, area: chess.Board) -> str:
     print(f"{cpu.color} is thinking...")
     area_array = board_to_array(area.fen().split(" ")[0])
     # This returns a string in UCI formatting so no need to transform it as above
-    move = cpu.engine.get_best_move() 
+    move = cpu.engine.get_best_move()
     print(f"{cpu.color} plays {UCI_to_san(area, move)}")
     # Try and find optimal path
     try:
@@ -104,5 +104,5 @@ def cpu_move(cpu: Player, area: chess.Board) -> str:
     return move, a_star_path
 
 if __name__ == "__main__":
-    ...
+    print("Noice")
 

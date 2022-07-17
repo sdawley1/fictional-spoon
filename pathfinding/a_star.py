@@ -21,9 +21,9 @@ class Node:
         # f = Total cost of a node
         # g = Distance between current node and start node
         # h = Heuristic; estimated distance from current node to end node
-        self.f = 0  
-        self.g = 0  
-        self.h = 0  
+        self.f = 0
+        self.g = 0
+        self.h = 0
 
     def __eq__(self, other: "Node") -> None:
         """Test if two nodes are the same"""
