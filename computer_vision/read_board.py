@@ -29,9 +29,10 @@ def read_board(board_pic_path, template_fnames, piece_names):
     board = np.empty((8, 8), dtype='str')
     board[:] = ' '
 
-    for template, piece in zip(template_fnames, piece_names):
-        template = cv.imread(i,0)
-        template = imutils.resize(template, width = int(img.shape[1] * 0.02))
+    for qrcode, piece in zip(template_fnames, piece_names):
+        board_pic = cv.imread(board_pic_path)
+        template = cv.imread(qrcode,0)
+        template = imutils.resize(template, width = int(board_pic.shape[1] * 0.02))
 
         w, h = template.shape[::-1]
         method = eval('cv.TM_CCOEFF')
