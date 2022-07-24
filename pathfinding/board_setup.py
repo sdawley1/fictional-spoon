@@ -12,7 +12,6 @@ import chess
 import numpy as np
 sys.path.append("../")
 from pathfinding.a_star import Astar, Node
-from chess_engine.move_tracker import check_castles_int, check_castles_str
 
 
 def board_to_array(fen: str) -> list:
@@ -88,6 +87,46 @@ def castles_to_coords(move: str, move_class: bool=False) -> tuple:
         # Castling long for black
         elif move.from_square == 60 and move.to_square == 56:
             return ((0, 4), (0, 2)), ((0, 0), (0, 3)) # king: (to_square, from_square) & rook: (to_square, from_square)
+
+def check_castles_str(move: str) -> bool:
+    """
+    Check if the desired move is castling
+    Used for pathfinding algorithm
+    :param move: should be in UCI format
+    """
+    # Castling short for white
+    if move[:2] == "e1" and move[2::] == "h1":
+        return True
+    # Castling long for white
+    elif move[:2] == "e1" and move[2::] == "a1":
+        return True
+    # Castling short for black
+    elif move[:2] == "e8" and move[2::] == "h8":
+        return True
+    # Castling long for black
+    elif move[:2] == "e8" and move[2::] == "a8":
+        return True
+    return False
+
+def check_castles_int(move: chess.Move) -> bool:
+    """
+    Check if the desired move is castling
+    Used for pathfinding algorithm
+    :param move: should be chess.Move class to return integers for from_square and to_square
+    """
+    # Castling short for white
+    if move.from_square == 4 and move.to_square == 7:
+        return True
+    # Castling long for white
+    elif move.from_square == 4 and move.to_square == 0:
+        return True
+    # Castling short for black
+    elif move.from_square == 60 and move.to_square == 63:
+        return True
+    # Castling long for black
+    elif move.from_square == 60 and move.to_square == 56:
+        return True
+    return False
 
 ## THIS IS THE IMPORTANT FUNCTION ##
 def board_path(array: array, uci_move: str, castles: bool=False) -> list:

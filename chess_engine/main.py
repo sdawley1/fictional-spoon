@@ -11,7 +11,7 @@ import players
 from eve import eve_gameplay
 from pve import pve_gameplay
 from pvp import pvp_gameplay
-sys.path.append("..")
+sys.path.append("../")
 from pathfinding.board_setup import board_to_array
 
 def main() -> None:
