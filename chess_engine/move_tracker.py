@@ -5,7 +5,6 @@ ADD CASE FOR IF PLAYER CASTLES TO PATHFINDING ALGORITHM
 HOPEFULLY IT'S NOT THAT HARD
 """
 
-from mmap import ACCESS_READ
 import chess
 from stockfish import Stockfish
 from players import Player
@@ -102,6 +101,46 @@ def cpu_move(cpu: Player, area: chess.Board) -> str:
     if area.is_check():
         print(f"The king is in check!")
     return move, a_star_path
+
+def check_castles_str(move: str) -> bool:
+    """
+    Check if the desired move is castling
+    Used for pathfinding algorithm
+    :param move: should be in UCI format
+    """
+    # Castling short for white
+    if move[:2] == "e1" and move[2::] == "h1":
+        return True
+    # Castling long for white
+    elif move[:2] == "e1" and move[2::] == "a1":
+        return True
+    # Castling short for black
+    elif move[:2] == "e8" and move[2::] == "h8":
+        return True
+    # Castling long for black
+    elif move[:2] == "e8" and move[2::] == "a8":
+        return True
+    return False
+
+def check_castles_int(move: chess.Move) -> bool:
+    """
+    Check if the desired move is castling
+    Used for pathfinding algorithm
+    :param move: should be chess.Move class to return integers for from_square and to_square
+    """
+    # Castling short for white
+    if move.from_square == 4 and move.to_square == 7:
+        return True
+    # Castling long for white
+    elif move.from_square == 4 and move.to_square == 0:
+        return True
+    # Castling short for black
+    elif move.from_square == 60 and move.to_square == 63:
+        return True
+    # Castling long for black
+    elif move.from_square == 60 and move.to_square == 56:
+        return True
+    return False
 
 if __name__ == "__main__":
     print("Noice")

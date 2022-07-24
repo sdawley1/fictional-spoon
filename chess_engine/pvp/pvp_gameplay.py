@@ -70,4 +70,3 @@ def GameplayLoop(p1: Player, p2: Player, area: chess.Board()) -> tuple:
     # Return results of the match
     return outcome.termination, outcome.winner, outcome.result()
 
-
