@@ -9,8 +9,7 @@ import chess
 from stockfish import Stockfish
 from players import Player
 import sys
-
-sys.path.append("../")
+sys.path.append("..")
 from pathfinding.board_setup import board_path, board_to_array
 
 def whose_move(p1: Player, p2: Player, area: chess.Board) -> int:

@@ -10,7 +10,6 @@ from array import array
 from tabnanny import check
 import chess
 import numpy as np
-
 sys.path.append("../")
 from pathfinding.a_star import Astar, Node
 from chess_engine.move_tracker import check_castles_int, check_castles_str
