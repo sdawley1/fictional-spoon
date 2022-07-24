@@ -1,8 +1,7 @@
 """
 Tracking moves made by human and computer
 
-ADD CASE FOR IF PLAYER CASTLES TO PATHFINDING ALGORITHM
-HOPEFULLY IT'S NOT THAT HARD
+ACCOUNT FOR PROMOTIONS
 """
 
 from mmap import ACCESS_READ
@@ -10,9 +9,11 @@ import chess
 from stockfish import Stockfish
 from players import Player
 import sys
-
-sys.path.append("../")
+sys.path.append('../')
 from pathfinding.board_setup import board_path, board_to_array
+
+#sys.path.append("../")
+#from pathfinding.board_setup import board_path, board_to_array
 
 def whose_move(p1: Player, p2: Player, area: chess.Board) -> int:
     """ Determine whose turn it is to move in the game """
