@@ -32,19 +32,19 @@ def read_board(board_pic_path, template_fnames, piece_names):
     board[:] = ' '
 
     for qrcode, piece in zip(template_fnames, piece_names):
-        board_pic = cv.imread(board_pic_path)
-        template = cv.imread(qrcode,0)
-        template = imutils.resize(template, width = int(board_pic.shape[1] * 0.02))
+        img = cv.imread(board_pic_path,0)
 
+        template = cv.imread(qrcode,0)
+        template = imutils.resize(template, width = int(img.shape[1] * 0.05))
         w, h = template.shape[::-1]
         method = eval('cv.TM_CCOEFF')
-        res = cv.matchTemplate(board_pic_path,template,method)
+        res = cv.matchTemplate(img,template,method)
         min_val, max_val, min_loc, max_loc = cv.minMaxLoc(res)
         top_left = max_loc
-
+        
         file, rank =  get_square(top_left)
         board[file-1][rank-1] = piece
     
-    return(fen_from_board(board))
+    return(board)
 
-print(round(131, -1))
+print(read_board('cvtest.png', ['qrcodes/empty.jpg', 'qrcodes/2345.jpg'], ['Q', 'n']))
