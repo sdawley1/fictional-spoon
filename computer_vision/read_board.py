@@ -1,9 +1,11 @@
+import sys
 from operator import le
 import cv2 as cv
 import imutils
 import numpy as np
 from matplotlib import pyplot as plt
 from itertools import combinations
+sys.path.append('../')
 from pathfinding.create_random_fen import fen_from_board
 
 def get_square(top_left):
@@ -44,3 +46,5 @@ def read_board(board_pic_path, template_fnames, piece_names):
         board[file-1][rank-1] = piece
     
     return(fen_from_board(board))
+
+print(round(131, -1))
