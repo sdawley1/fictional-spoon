@@ -16,10 +16,10 @@ for j in strings:
     templates.append(''.join(j))
 templates = [i+'.jpg' for i in templates]
 
-img = cv.imread('qrcodes/allcodes.png',0)
+img = cv.imread('qrcodes/cvtest.png',0)
 
-template = cv.imread('qrcodes/123.jpg',0)
-template = imutils.resize(template, width = int(img.shape[1] * 0.02))
+template = cv.imread('qrcodes/2345.jpg',0)
+template = imutils.resize(template, width = int(img.shape[1] * 0.05))
 
 w, h = template.shape[::-1]
 
@@ -35,5 +35,6 @@ plt.subplot(121),plt.imshow(res,cmap = 'viridis')
 plt.title('Matching Result'), plt.xticks([]), plt.yticks([])
 plt.subplot(122),plt.imshow(img,cmap = 'viridis')
 plt.title('Detected Point'), plt.xticks([]), plt.yticks([])
+print(top_left)
 
 plt.show()
