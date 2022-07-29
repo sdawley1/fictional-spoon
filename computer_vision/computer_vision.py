@@ -29,7 +29,7 @@ def get_square(top_left: tuple) -> tuple:
 
     file, _ = min(file_coords.items(), key=lambda x: abs(file_coord - x[1]))
     rank, _ = min(rank_coords.items(), key=lambda x: abs(rank_coord - x[1]))
-    print(str(file_num[file])+str(rank))
+    #print(str(file_num[file])+str(rank))
 
     return(file, rank)
 
@@ -53,14 +53,13 @@ def read_board(board_pic_path: str, template_fnames: list, piece_names: list) ->
         res = cv.matchTemplate(img,template,method)
         _, _, _, max_loc = cv.minMaxLoc(res)
         top_left = max_loc
-        print(top_left, piece)
+        #print(top_left, piece)
         
         file, rank =  get_square(top_left)
         board[8-rank][file-1] = piece
     return(fen_from_board(board))
 
-#print(read_board('cvtest2.png', ['qrcodes/empty.jpg', 'qrcodes/12345.jpg', 'qrcodes/1234.jpg'],
-#                    ['K', 'k', 'N']))
+#print(read_board('cvtest2.png', ['qrcodes/empty.jpg', 'qrcodes/12345.jpg', 'qrcodes/1234.jpg'], ['K', 'k', 'N']))
 
 def check_update(current_board: str, board_pic_path: str, template_fnames: list, piece_names: list) -> bool:
     '''
@@ -71,8 +70,8 @@ def check_update(current_board: str, board_pic_path: str, template_fnames: list,
     :param piece_names: list of piece names, in same order as corresponding qr codes
     '''
     board_updated = False
-    
     next_board = read_board(board_pic_path, template_fnames, piece_names)
+
     if current_board != next_board:
         board_updated = True
 
