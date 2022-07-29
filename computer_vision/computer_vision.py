@@ -1,4 +1,3 @@
-from asyncore import read
 import sys
 from operator import le
 import cv2 as cv
